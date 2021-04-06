@@ -26,25 +26,9 @@ let mintScript = {
 };
 
 let policy = cardano.transactionPolicyid(mintScript);
-const ASSET_NAME = policy + ".PiPurple";
-
-const metadata = {
-    1: {
-        [policy]: {
-            "PiPurple": {
-                "image": "ipfs://QmdsGwHo9EqqA6pFCKs64p7P4HWJVfHksa8abmw8FMCrjn",
-                "name": "PiPurple",
-                "authors": ["Wael", "Olivier"],
-                "website": "http://ada-pi.io/"
-            }
-        }
-    }
-}
-
+const ASSET_NAME = policy + ".PiCoin0";
 
 const invalidAfter = cardano.queryTip().slot + 10000
-
-console.log('invalidAfter', invalidAfter)
 
 let tx = {
 invalidAfter,
@@ -52,11 +36,10 @@ invalidAfter,
   txOut: [
     {
       address: wallet.paymentAddr,
-      amount: { ...wallet.balance().amount, [ASSET_NAME]: 1 },
+      amount: { ...wallet.balance().amount, [ASSET_NAME]: 0 },
     },
   ],
-  mint: [{ action: "mint", amount: 1, token: ASSET_NAME }],
-  metadata,
+  mint: [{ action: "mint", amount: -1, token: ASSET_NAME }],
   witnessCount: 2,
 };
 

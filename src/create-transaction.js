@@ -10,9 +10,7 @@ console.log(
 
 //receiver address
 const receiver =
-    "addr_test1qrmpfgxq6nrk7d57k7c68jd7jydeex0p9ml2pfy4rfz9ze49j5wfrz38hgau7mdx0klffmt8lt33dsnnjg3zg7rxh0ssg9rswn";
-
-const ASSET_NAME = 'ec080d16da957a69851414095d4eab4c7077ee31fcb65d3817f3e5c1.ShitCoin0'
+    "addr1qyxy3exkk223we9qur8nq0nnmt5vvkxgxucjt85fwns5gkyrq8xs909fhky97vm27e4aylxtsk4rf43rks6cx5sdy3dscljyv0";
 
 const invalidAfter = cardano.queryTip().slot + 10000
 
@@ -25,13 +23,17 @@ let txInfo = {
             address: sender.paymentAddr,
             amount: {
                 lovelace: sender.balance().amount.lovelace - cardano.toLovelace(2),
+                // '12fc3123feb6f5c2d16aeb373eb99f677f2e1c6de9bd3cfe3a395e4d.PiTrippy': 1,
             },
         }, //amount going back to sender
         {
             address: receiver,
             amount: {
                 lovelace: cardano.toLovelace(2),
-                [ASSET_NAME]: 1
+                // '12fc3123feb6f5c2d16aeb373eb99f677f2e1c6de9bd3cfe3a395e4d.PiPurple': 1,
+                // '12fc3123feb6f5c2d16aeb373eb99f677f2e1c6de9bd3cfe3a395e4d.PiShocker': 1,
+                '12fc3123feb6f5c2d16aeb373eb99f677f2e1c6de9bd3cfe3a395e4d.PiTrippy': 1,
+                // '12fc3123feb6f5c2d16aeb373eb99f677f2e1c6de9bd3cfe3a395e4d.PiWater': 1
             }
         }, //amount going to receiver
     ],
